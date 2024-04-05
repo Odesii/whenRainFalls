@@ -18,7 +18,6 @@ function getWeather(city){
     fetch(weatherUrl).then(function(response){
         return response.json();
     }).then(function(data){
-        displayWeather(data);
         console.log("--------- First request with geolocation --------")
         console.log(data);
 
@@ -26,16 +25,14 @@ function getWeather(city){
         const longitude = data[0].lon;
         console.log(latitude, longitude);
 
-        const forecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherAppAPIKey}`;
+        const forecast = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&start=imperial&appid=${weatherAppAPIKey}`;
 
         fetch(forecast).then(function(response2) {
             return response2.json();
         }).then(function(data2){
-            console.log("--------- Second request with forecast --------")
+            displayWeather(data2);
+            console.log("--------- Second request with current weather --------")
             console.log(data2);
-            for(let i = 0; i < data2.list.length; i++){
-                console.log(data2.list[i].main.temp)
-            }
         })
 
 })};
@@ -43,10 +40,13 @@ function getWeather(city){
 function displayWeather(weatherData){
     let currentWeatherEl = document.getElementById("mainWeather")
     
+    currentWeatherEl.innerHTML='';
+
     let mainInsert =  document.createElement('div')
 
-    mainInsert.innerHTML = `<h2>${weatherData[0].name}</h2>`
-
+    mainInsert.innerHTML = `<h2>${weatherData.name} </h2> <h2>${weatherData.dt}</h2>
+        <p>Temp ${weatherData.main.temp} Humidity ${weatherData.main.humidity
+        } Wind Speed ${weatherData.wind.speed}</p> <p>${weatherData.weather[0].icon}</p>`
     currentWeatherEl.appendChild(mainInsert);
 }
 
@@ -54,3 +54,11 @@ function displayWeather(weatherData){
 function addHistory(city){
 
 }
+
+
+
+
+// for(let i = 0; i < data2.list.length; i++){
+//     console.log(data2.list[i].main.temp)
+    
+// }
