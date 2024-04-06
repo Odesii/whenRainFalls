@@ -12,18 +12,21 @@
     <header>
         <h1>ウェザー</h1>
     </header>
+ 
+    <aside>
+        <label for="search">ハント</label>
+        <input type="text" id="search" placeholder="Find your city"/>
+        <button id="searchBtn">サーチ</button>
+        <section id="searchHistory"></section>
+    </aside>
+    <div class="constrain">
     <main>
-        <aside>
-            <label for="search">ハント</label>
-            <input type="text" id="search" placeholder="Find your city"/>
-            <button id="searchBtn" class="second">サーチ</button>
-            <section id="searchHistory"></section>
-        </aside>
         <section id="mainWeather" class="current">
         </section>
-        <section id="5day">
+        <section id="5day" class="forecast">
         </section>
 
     </main>
+</div>
 </body>
 </html>
