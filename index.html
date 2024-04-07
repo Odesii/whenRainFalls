@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atmospheric Conundrum</title>
-    <link rel="stylesheet" href="./assets/css/style.css"/>
-    <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"
+    ></script>
     <script defer src="assets/js/script.js"></script>
-</head>
-<body>
+  </head>
+  <div class="full-page">
+  <body>
     <header>
-        <h1>ウェザー</h1>
+      <h1>ウェザー</h1>
     </header>
- 
     <aside>
-        <label for="search">ハント</label>
-        <input type="text" id="search" placeholder="Find your city"/>
-        <button id="searchBtn">サーチ</button>
-        <section id="searchHistory"></section>
+      <label for="search">ハント</label>
+      <input type="text" id="search" placeholder="Find your city" />
+      <button id="searchBtn">サーチ</button>
+      <section id="searchHistory"></section>
     </aside>
     <div class="constrain">
-    <main>
-        <section id="mainWeather" class="current">
-        </section>
-        <section id="5day" class="forecast">
-        </section>
-
-    </main>
+      <main>
+        <section id="mainWeather" class="current"></section>
+        <section id="5day" class="forecast"></section>
+      </main>
+    </div>
+  </body>
 </div>
-</body>
 </html>
