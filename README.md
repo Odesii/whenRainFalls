@@ -42,7 +42,7 @@
 
 ## Screen Shots
 
-![Vibe](https://i.imgur.com/U5wciJu.gif)
+![Vibe](/assets/images/U5wciJu.gif)
 
 
 ## Disclaimer
