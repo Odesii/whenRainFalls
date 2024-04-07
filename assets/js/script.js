@@ -1,6 +1,7 @@
 const weatherAppAPIKey = "5f1008dc25600c0e8d9ea9d20ea6a3e6";
 const button = document.getElementById("searchBtn");
 
+document.addEventListener("DOMContentLoaded", displayHistory);
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
@@ -141,6 +142,7 @@ function displayHistory(){
 
   history.forEach(city =>{ 
     let cityEl = document.createElement("button")
+      cityEl.setAttribute('id', 'previous');
 
     cityEl.textContent = city;
 
@@ -149,4 +151,15 @@ function displayHistory(){
 
 
 };
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  document.getElementById("previous").addEventListener("click", function(event){
+    event.preventDefault();
+    let oldCity = event.target.textContent
+    if(oldCity){
+        getWeather(oldCity);
+    }
+  })
+});
 
