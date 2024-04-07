@@ -1,14 +1,14 @@
 const weatherAppAPIKey = "5f1008dc25600c0e8d9ea9d20ea6a3e6";
 const button = document.getElementById("searchBtn");
 
+
 button.addEventListener("click", function (event) {
   event.preventDefault();
 
   let city = document.getElementById("search").value;
-  if (city) {
+if(city){
     getWeather(city);
-    addHistory(city);
-  }
+}
 });
 
 function getWeather(city) {
@@ -19,15 +19,14 @@ function getWeather(city) {
       return response.json();
     })
     .then(function (data) {
-      // console.log("--------- First request with geolocation --------")
-      // console.log(data);
-
       const latitude = data[0].lat;
       const longitude = data[0].lon;
+      console.log(data);
       // console.log(latitude, longitude);
-
+      const cityName = data[0].name;
+      addHistory(cityName);
+     
       const currentW = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherAppAPIKey}`;
-
       fetch(currentW)
         .then(function (response2) {
           return response2.json();
@@ -122,5 +121,32 @@ function fiveDay(weatherData) {
   createBlock(39);
 }
 
-function addHistory(city) {
+function addHistory(cityName) {
+
+let history = JSON.parse(localStorage.getItem('searchHistory')) || [] ;
+  
+  if (!history.includes(cityName)){
+    history.push(cityName)
+  }
+  localStorage.setItem('searchHistory', JSON.stringify(history))
+  
+    displayHistory();
+
 }
+
+function displayHistory(){
+  let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+  let display = document.getElementById('searchHistory')
+  display.innerHTML = '';
+
+  history.forEach(city =>{ 
+    let cityEl = document.createElement("button")
+
+    cityEl.textContent = city;
+
+    display.appendChild(cityEl);
+  });
+
+
+};
+
